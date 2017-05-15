@@ -18,28 +18,48 @@
     }
 
     // Regular
-
+    console.log('greetings!');
     // Interpolated
-
+    console.log('Hello i am a %s string!', 'whatever goes');
     // Styled
-
+    console.log('%c I am some terrific text', 'font-size:20px; backgrount: green'); // Doesn't seem to work in firefox devtools
     // warning!
-
+    console.warn('oh noes!');
     // Error :|
-
+    console.error('dang!');
     // Info
-
+    console.info('You eat 20 spiders a year');
     // Testing
+    const p = document.querySelector('p');
 
+    console.assert(p.classList.contains('bang'), 'That is an alternative fact!');
     // clearing
-
+    console.clear();
     // Viewing DOM Elements
-
+    console.dir(p);
     // Grouping together
-
+    dogs.forEach(doggo => {
+      console.groupCollapsed(`${doggo.name}`);
+      console.log(`${doggo.name} is ${doggo.age} years old`);
+      console.log(`${doggo.name} is ${doggo.age * 7} dog years old`);
+      console.groupEnd(`${doggo.name}`); // Again, works differently in Firefox
+    })
     // counting
-
+    console.count('Kamil');
+    console.count('Kamil');
+    console.count('Iwona');
+    console.count('Kamil');
+    console.count('Iwona');
     // timing
+    console.time('fetching some data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching some data');
+        console.log(data);
+      });
+
+      console.table(dogs);
 
   </script>
 </body>
