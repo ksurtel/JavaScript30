@@ -9,12 +9,30 @@
   <script>
     // start with strings, numbers and booleans
 
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age = 200;
+    console.log(age, age2);
+
+    let name = 'Kamil';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'Surtel';
+    console.log(name, name2);
     // Let's say we have an array
+
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
 
+    const team = players;
+    console.log(players, team);
+
     // You might think we can just do something like this:
+
+    team[3] = 'Mux';
+    console.log(players, team);
 
     // however what happens when we update that array?
 
@@ -26,11 +44,19 @@
 
     // So, how do we fix this? We take a copy instead!
 
+    const team2 = players.slice(); // returns the original array
+    
     // one way
 
     // or create a new array and concat the old one in
 
+    const team3 = [].concat(players); // this one works as well
+
     // or use the new ES6 Spread
+
+    const team4 = [...players]; // the snazziest way
+
+    const team5 = Array.from(players);
 
     // now when we update it, the original one isn't changed
 
@@ -38,13 +64,38 @@
 
     // with Objects
 
+    const person = {
+      name: 'Kamil surtel',
+      age: 105,
+    };
+
     // and think we make a copy:
+
+    // const capt = person;
+    // capt.number = 42; // makes a reference istead, updates the original object
 
     // how do we take a copy instead?
 
+    const capt2 = Object.assign({}, person, {number: 99, age: 31});
+
     // We will hopefully soon see the object ...spread
 
+    // capt3 = {...person} // doesn't work yet, see above
+
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+    const kamil = {
+      name: 'Kamil',
+      age: 45,
+      social: {
+        twitter: '@ksurtel',
+        facebook: 'ksurtel'
+      }
+    };
+
+    const dev = Object.assign({}, kamil);
+
+    const dev2 = JSON.parse(JSON.stringify(kamil));
 
   </script>
 
